@@ -1,0 +1,29 @@
+
+#div0,#div1,#div2,#div3,#div4,#div5,#div6,#div7,#div8{
+   border: 1px solid black;
+   height: 100px;
+   width: 100px;
+   float: left;
+   font-size: 40px;
+   text-align: center;
+   color: crimson;
+   background-color: beige;
+   font-family: "Permanent Marker", cursive;
+}
+#div0,#div3,#div6{
+    clear: left;
+}
+.game-container{
+    margin-left:250px;
+}
+.game-restart{
+    margin-top: 17px;
+    margin-left: 45%;
+    background-color:grey;
+}
+
+.game-status{
+    margin-top: 45%;
+    margin-left: 46.5%;
+    color: green;
+}
