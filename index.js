@@ -1,5 +1,6 @@
 let statusDisplay = document.querySelector(".game-status");
 let gameActive = true;
+let currentPlayer1 = "Player1"
 let currentPlayer = "X";
 
 let gameState = ["", "", "", "", "", "", "", "", ""];
@@ -15,12 +16,12 @@ const winningConditions = [
     [2, 4, 6]
 ]
 // Todo : why function and not Simple variable(String);
-const winningMessage = () => `player ${currentPlayer} has won!`  ;   /* because is dynamic variable present ${currentPlayer}..if no dyanmic them use 
+const winningMessage = () => `Congratulations! ${currentPlayer1} wins`;   /* because is dynamic variable present ${currentPlayer}..if no dyanmic them use 
                                                                         simple string string is static*/
 
-const drawMessage = () => `Game ended in a draw`;
+const drawMessage = () => `Draw!`;
 
-const currentPlayerTurn = () => `Its ${currentPlayer}'s turn`;
+const currentPlayerTurn = () => `Its ${currentPlayer1}'s turn`;
 statusDisplay.innerHTML = currentPlayerTurn();
 
 
@@ -34,6 +35,7 @@ function handlecellPlayed(clickedCell, clickCellIndex) {
 
   // this function calling in handleResultValidation()
   function handlePlayerChange(){
+        currentPlayer1= currentPlayer1 == "Player1"?"Player2":"Player1"
       currentPlayer =currentPlayer=="X"?"O":"X";
        statusDisplay.innerHTML= currentPlayerTurn();;
   }
@@ -60,6 +62,7 @@ function handleResultValidation() {
         }
     }
    if(roundWon){
+       alert(winningMessage());
        statusDisplay.innerHTML=winningMessage();
        gameActive=false;
        return ;
@@ -68,6 +71,7 @@ function handleResultValidation() {
 
    let roundDraw=!gameState.includes("") 
        if (roundDraw) {
+           alert(drawMessage());
            statusDisplay.innerHTML=drawMessage();
            gameActive=false;
            return;
@@ -104,6 +108,7 @@ function handleCellClick(clickCellEvent) {
     function handleRestartGame() {
          gameActive = true;
          currentPlayer="X";
+           currentPlayer1 = "Player1"
          gameState = ["", "", "", "", "", "", "", "", ""];
          statusDisplay.innerHTML = currentPlayerTurn();
         document.querySelectorAll(".cell").forEach((cell) => (cell.innerHTML = ""));
